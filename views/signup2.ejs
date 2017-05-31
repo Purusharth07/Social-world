@@ -1,0 +1,69 @@
+<!doctype html>
+<html>
+<head>
+    <title>Social World</title>
+    <link rel="shortcut icon" href="/images/favicon.ico" />
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css"> <!-- load bootstrap css -->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css"> <!-- load fontawesome -->
+    <link rel="stylesheet" type="text/css" href="/stylesheets/login.css">
+    <style>
+        body { padding-top:80px; 
+
+            background-image: url('images/Desktop-Cool.jpg');
+            background-size: cover;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+<div class="col-sm-6 col-sm-offset-3">
+
+    <h1><span class="fa fa-sign-in"></span> Signup</h1>
+
+    <!-- show any messages that come back with authentication -->
+    <% if (message.length > 0) { %>
+        <div class="alert alert-danger"><%= message %></div>
+    <% } %>
+
+    <!-- LOGIN FORM -->
+ <div class="loginbox radius">
+  <h2 style="color:#FBFCFD; text-align:center;">Welcome to Social World !!</h2>
+  <div class="loginboxinner radius">
+    <!--loginheader-->
+    <div class="loginform">
+      <form id="/signup" action="" method="post">
+        <p>
+          <input type="text" id="firstname" name="firstname" placeholder="First Name" value="" class="radius mini" />
+          <input type="text" id="lastname" name="lastname" placeholder="Last Name" value="" class="radius mini" />
+        </p>
+        <p>
+          <input type="text" id="email" name="email" placeholder="Your Email" value="" class="radius" />
+        </p>
+        <p>
+          <input type="text" id="remail" name="remail" placeholder="Re-enter Email" class="radius" />
+        </p>
+        <p>
+          <input type="password" id="password" name="password" placeholder="New Password" class="radius" />
+        </p>
+        <p>
+          <button class="radius title" name="signup">SignUp</button>
+        </p>
+      </form>
+    </div>
+    <!--loginform-->
+  </div>
+  <!--loginboxinner-->
+</div>
+<!--loginbox-->
+
+    <hr>
+
+    <p>Already have an account? <a href="/login">Login</a></p>
+    <p>Or go <a href="/">home</a>.</p>
+
+</div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,261 @@
+<!doctype html>
+<html>
+<head>
+    <title>ToDoList</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <link rel="shortcut icon" href="/images/favicon.ico" />
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/chat.css">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/font-awesome.css">
+    <!-- CHANGES -->
+    <link href='//fonts.googleapis.com/css?family=Aguafina Script' rel='stylesheet'>
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <link rel="stylesheet" href="/stylesheets/material.min.css">
+    <script src="/node_modules/material-design-lite/material.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <!-- Add icon library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+<body>
+    <!--Navbar-->
+<nav class="navbar navbar-inverse navbar-fixed-top" id="my-navbar">
+<div class="navbar-header">
+<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+</button>
+
+<a href="/profile1" class="navbar-brand" style="font-family: Aguafina Script; font-size: 26px;">Social World</a>
+</div>
+
+<div class="collapse navbar-collapse" id="navbar-collapse">
+
+<a href="/update" class="btn navbar-btn navbar-right" style="color: #ffffff">Update</a>
+<a href="/About" class="btn navbar-btn navbar-right" style="color: #ffffff">About Us</a>
+    <ul class="nav navbar-nav">
+    <li><a href="/feedback">Feedback</a>
+    <li><a href="/polls">Events Poll</a>
+    <li><a href="/TaskList">Task List</a>
+    <li id="myBtn"><a href="#Contact">Contact Us</a>
+    </ul>
+</div>
+<!-- The Modal -->
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+              <div class="card2">
+                <img src="/images/me.jpg" alt="Purusharth Arora" style="width:100%">
+                <div class="container2">
+                    <h3>Purusharth Arora</h3>
+                    <p class="title">CEO & Founder, Social World !!</p>
+                    <p>V.I.T University</p>
+                    <a href="#" class="icon"><i class="fa fa-dribbble"></i></a> 
+                    <a href="#" class="icon"><i class="fa fa-twitter"></i></a> 
+                    <a href="#" class="icon"><i class="fa fa-linkedin"></i></a> 
+                    <a href="#" class="icon"><i class="fa fa-facebook"></i></a> 
+                    <p><button class="button">Contact</button></p>
+                </div>
+            </div>
+    <span class="close">&times;</span>
+        <div id="myModal" class="modal">
+
+            <!-- The Close Button -->
+            <span class="close" onclick="document.getElementById('myModal').style.display='none'">&times;</span>
+
+
+        <div id="caption"></div>
+        </div>
+  </div>
+</div>
+</nav>
+<!-- Side Buttons -->
+<div id="mySidenav" class="sidenav">
+  <a href="/About" id="about">About</a>
+  <a href="/TaskList" id="blog">Task List</a>
+  <a href="/update" id="projects">Update</a>
+  <a href="/contact" id="contact">Contact</a>
+</div><br><br><br><br>
+<div class="container">
+        <div class="row">
+            <div class="col-lg-5 col-md-5 col-sm-5">
+                <div id="myDIV" class="header">
+                    <h2 style="margin:5px">My To Do List</h2>
+                    <input type="text" id="myInput" placeholder="Add TAsk here...">
+                    <span onclick="newElement()" class="addBtn">Add</span>
+                </div>
+                <div class="To-Do-List">
+                <ul id="myUL">
+                </ul>
+                </div>
+            </div>    
+        </div>
+
+        <div class="col-lg-4 col-md-4 col-sm-4">
+                <div class="chat-box-div">
+                    <div class="chat-box-head">
+                        GROUP CHAT
+                            <div class="btn-group pull-right">
+                                <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-expanded="true" style="color: #000000" >
+                                    <span class="fa fa-cogs"></span> 
+                                    <span class="sr-only">Toggle Dropdown</span>
+                                </button>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li><a href="#"><span class="fa fa-map-marker"></span>&nbsp;Invisible</a></li>
+                                    <li><a href="#"><span class="fa fa-comments-o"></span>&nbsp;Online</a></li>
+                                    <li><a href="#"><span class="fa fa-lock"></span>&nbsp;Busy</a></li>
+                                    <li class="divider"></li>
+                                    <li><a href="#"><span class="fa fa-circle-o-notch"></span>&nbsp;Logout</a></li>
+                                </ul>
+                            </div>
+                    </div>
+                    <div class="panel-body chat-box-main" id="chat">
+                        
+                    </div>
+                    <div class="chat-box-footer">
+                    <form id="messageForm">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Enter Message Here..." id="message">
+                            <span class="input-group-btn">
+                                <input class="btn btn-info" type="submit">SEND</input>
+                            </span>
+                        </div>
+                    </form>
+                    </div>
+                </div>
+            </div>
+
+</div>
+
+<script >
+    var socket;
+    var todoList = [];
+    function newElement() {
+      var li = document.createElement("li");
+      var inputValue = document.getElementById("myInput").value;
+      if (inputValue === '') {
+        return alert("You must write something!");
+      }
+      var newItem = {
+        text:inputValue,
+        checked : false,
+        id : Math.floor(10000000*Math.random())
+    };
+        todoList.push(newItem);
+      socket.emit("addTodoItem",newItem);
+      document.getElementById("myInput").value = "";
+    }
+    function updateTodoList(todoList){
+        var ul = document.getElementById("myUL");
+        ul.innerHTML = "";
+        todoList.forEach(function(item){
+            var t = document.createTextNode(item.text);
+            var li = document.createElement("li");
+            li.appendChild(t);
+
+            if(item.checked){
+                $(li).toggleClass("checked");
+            }
+            
+            var span = document.createElement("span");
+            var txt = document.createTextNode("\u00D7");
+            span.className = "close";
+            span.appendChild(txt);
+
+            span.onclick = function(){
+                console.log("Remove :: "+item);
+                socket.emit("removeTodoItem",item);
+            }
+
+            li.onclick = function(){
+                console.log("Li called :: "+this.parentElement);
+                item.checked = !item.checked;
+                socket.emit("updateTodoItem",item);
+            }
+            li.appendChild(span);
+            ul.appendChild(li);
+        });
+    };
+    $(function(){
+            socket = io.connect();
+    socket.on("updateTodoList",function(data){
+                console.log(data);
+                updateTodoList(data);
+            });
+    });
+</script>
+<script type="text/javascript">
+        $(function(){
+            socket = io.connect();
+            var $messageForm = $('#messageForm');
+            var $message = $('#message');
+            var $chat = $('#chat');
+            var $users = $("#users");
+            var $content = $('#content');
+            var $date = $('#date');
+
+
+            $messageForm.submit(function(e){
+                    e.preventDefault();
+                    socket.emit('send message', $message.val());
+                    $message.val('');
+                    console.log('Submitted'); 
+            });
+            socket.on('new message', function(data){
+                $chat.append("<div class='chat-box-left'>"+ data.msg +"</div><div class='chat-box-name-left'><strong>"+ data.user +"</strong></div>");
+            });
+
+            socket.on("users", function(data){
+                console.log("Got users :: "+ data.user);
+                $users.html("");
+                data.forEach(function(user){
+                    $users.append("<div class='chat-box-online-left'><strong>"+ user +"</strong><hr class='hr-clas-low'/></div>")
+                });
+            });
+
+            socket.emit("register",{
+                email : email,
+                userId : userId
+            });
+
+        });
+</script>
+<script type="text/javascript">
+        // Get the modal
+var modal = document.getElementById('myModal');
+
+// Get the button that opens the modal
+var btn = document.getElementById("myBtn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks on the button, open the modal 
+btn.onclick = function() {
+    modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+    modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+</script>    
+</body>
+</html>

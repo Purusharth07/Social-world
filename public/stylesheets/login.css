@@ -1,0 +1,33 @@
+.loginbox { background: #000000; padding: 10px; width: 490px; margin: 4% auto 0 auto; position: relative; }
+.loginboxinner {
+	background: #FBFCFD; padding: 5px; position: relative; border: 1px solid #FBFCFD;
+	-moz-box-shadow: inset 0 1px 0 #FBFCFD; -webkit-box-shadow: inset 0 1px 0 #FBFCFD; box-shadow: inset 0 1px 0 #FBFCFD;
+}
+.loginform { margin: 4px auto; text-align:center; }
+
+.loginbox h1 { font-size: 30px; letter-spacing: 1px; color: #555; font-weight: normal; padding-top: 10px; }
+.loginbox p { margin: 7px 0 5px 0; }
+.loginbox label { display: block; color: #000000; letter-spacing: 1px; font-size: 18px; }
+.loginbox input.mini { width:195px; }
+.loginbox input {
+	padding: 12px 10px; color: #000000;
+	font-family: Arial, Helvetica, sans-serif; margin-top: 8px; font-size: 15px; border: 1px solid #ccc; width: 420px;  outline: none;
+}
+.loginbox button {
+	background-color: #000000;  padding: 10px 20px; font-size: 18px; border: 1px solid #1D3871; letter-spacing: 1px; color: #fff; width: 440px; line-height:30px; font-family:	'Helvetica Neue', Helvetica, Arial, sans-serif;
+	-moz-box-shadow: 1px 1px 3px #1D3871; -webkit-box-shadow: 1px 1px 3px #1D3871; box-shadow: 1px 1px 3px #1D3871; cursor: pointer;
+}
+
+.radius { -moz-border-radius: 5px; -webkit-border-radius: 5px; border-radius: 5px; }
+.radius1 { -moz-border-radius: 3px; -webkit-border-radius: 3px; border-radius: 3px; }
+.title { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color:#8E989E; line-height:28px; font-weight:normal; text-align:center; font-size:16px; }
+
+@media screen and (max-width: 430px) {
+
+	body { font-size: 11px; }
+	button, input, select, textarea { font-size: 11px; }
+
+	.loginbox { width: auto; margin: 10px; }
+	.loginbox input { width: 95%; }
+	.loginbox button { width: 100%; }
+}

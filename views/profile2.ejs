@@ -1,0 +1,281 @@
+<!doctype html>
+<html>
+<head>
+    <title>
+        Social World
+    </title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="description" content="" />
+    <meta name="author" content="Purusharth Arora" />
+    <link rel="shortcut icon" href="/images/favicon.ico" />
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/chat.css">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/font-awesome.css">
+    <!-- CHANGES -->
+    <link href='//fonts.googleapis.com/css?family=Aguafina Script' rel='stylesheet'>
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <link rel="stylesheet" href="/stylesheets/material.min.css">
+    <script src="/node_modules/material-design-lite/material.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <!-- CHANGES -->
+   <<!-- <style>
+        body{ margin-top:40px; word-wrap:break-word; }
+.card {
+/* Add shadows to create the "card" effect */
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+}
+
+/* On mouse-over, add a deeper shadow */
+.card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+/* Add some padding inside the card container */
+.container {
+    padding: 2px 16px;
+}
+    </style> -->>
+</head>
+<body onload="myFunction()" class="loaded">
+<!--PRE LOADER-->
+<div id="loader-wrapper">
+
+    <div id="loader"></div>
+    <header class="entry-header">
+            <h4 class="entry-title">Social World</h4>
+    </header>
+ 
+    <div class="loader-section section-left"></div>
+    <div class="loader-section section-right"></div>
+ 
+</div>
+<!--Navbar-->
+<nav class="navbar navbar-inverse navbar-fixed-top" id="my-navbar">
+<div class="navbar-header">
+<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+</button>
+
+<a href="" class="navbar-brand" style="font-family: Aguafina Script; font-size: 26px;">Social World</a>
+</div>
+
+<div class="collapse navbar-collapse" id="navbar-collapse">
+
+<a href="/update" class="btn navbar-btn navbar-right" style="color: #ffffff">Update</a>
+<a href="/About" class="btn navbar-btn navbar-right" style="color: #ffffff">About Us</a>
+    <ul class="nav navbar-nav">
+    <li><a href="/feedback">Feedback</a>
+    <li><a href="/polls">Events Poll</a>
+    <li><a href="/TaskList">Task List</a>
+    <li><a href="/contact">Contact Us</a> 
+    <li><a href="/proto-chat">Proto-chat</a> 
+    </ul>
+</div>
+</nav>
+<!-- Side Buttons -->
+<div id="mySidenav" class="sidenav">
+  <a href="#" id="about">About</a>
+  <a href="#" id="blog">Blog</a>
+  <a href="#" id="projects">Projects</a>
+  <a href="#" id="contact">Contact</a>
+</div>
+   <div class="page-header text-center" style="position: fixed;top: 50px;float: right;">
+       <!-- <h4><span class="fa fa-anchor"></span> Developers Ch@tting Portal</h4> -->
+        <a href="/logout" class="btn btn-default btn-sm">Logout</a>
+    </div> 
+    <!-- The actual snackbar -->
+<div id="snackbar">Lucky Thanks You for Logging In !!</div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-3 col-sm-3">
+                <div class="chat-box-online-div">
+                    <div class="chat-box-online-head">
+                    <h6>Online Users</h6>
+                    </div>
+                    <div class="panel-body chat-box-online" id="users">
+                     
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-lg-5 col-md-5 col-sm-5">
+            <div class="chat-box-div">
+                <div class="chat-box-head">Group Post</div>
+                <form id="postForm">
+                    <div class="form-group">
+                        <label>Post your thoughts here..</label>
+                        <textarea class="form-control" id="content"></textarea><br>
+                        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored">
+                          Share
+                        </button>
+                    </div>
+                </form>
+                <div class="panel-body chat-box-main-2" id="post">
+                </div>
+            </div>
+            </div>
+
+            <div class="col-lg-4 col-md-4 col-sm-4">
+                <div class="chat-box-div">
+                    <div class="chat-box-head">
+                        GROUP CHAT
+                            <div class="btn-group pull-right">
+                                <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-expanded="true" style="color: #000000" >
+                                    <span class="fa fa-cogs"></span> 
+                                    <span class="sr-only">Toggle Dropdown</span>
+                                </button>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li><a href="#"><span class="fa fa-map-marker"></span>&nbsp;Invisible</a></li>
+                                    <li><a href="#"><span class="fa fa-comments-o"></span>&nbsp;Online</a></li>
+                                    <li><a href="#"><span class="fa fa-lock"></span>&nbsp;Busy</a></li>
+                                    <li class="divider"></li>
+                                    <li><a href="#"><span class="fa fa-circle-o-notch"></span>&nbsp;Logout</a></li>
+                                </ul>
+                            </div>
+                    </div>
+                    <div class="panel-body chat-box-main" id="chat">
+                        
+                    </div>
+                    <div class="chat-box-footer">
+                    <form id="messageForm">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Enter Message Here..." id="message">
+                            <span class="input-group-btn">
+                                <input class="btn btn-info" type="submit">SEND</input>
+                            </span>
+                        </div>
+                    </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<script >
+        $('body').toggleClass('loaded');
+        $(document).ready(function() {
+ 
+        setTimeout(function(){
+            $('body').addClass('loaded');
+            $('h1').css('color','#222222');
+            }, 3000);
+ 
+        });
+        var username = <%- JSON.stringify(user.local.username) %>;
+        var userId = <%- JSON.stringify(user._id) %>;
+        $(function(){
+            socket = io.connect();
+            var $messageForm = $('#messageForm');
+            var $postForm = $('#postForm');
+            var $message = $('#message');
+            var $chat = $('#chat');
+            var $users = $("#users");
+            var $post = $('#post');
+            var $content = $('#content');
+            var $date = $('#date');
+
+
+            $messageForm.submit(function(e){
+                    e.preventDefault();
+                    socket.emit('send message', $message.val());
+                    $message.val('');
+                    console.log('Submitted'); 
+            });
+            $postForm.submit(function(e){
+                    e.preventDefault();
+                    socket.emit('share', $content.val());
+                    $post.val('');
+                    console.log('Submitted POST'); 
+            });
+            socket.on('new message', function(data){
+                $chat.append("<div class='chat-box-left'>"+ data.msg +"</div><div class='chat-box-name-left'><strong>"+ data.user +"</strong></div>");
+            });
+
+            socket.on('new post', function(data){
+                $post.append("<div class='card'><div class='contain'><h4><b>"+ data.user +"</b></h4><p></p></br>"+ data.post +"</div><hr class='hr-clas-low'/><div class='overlay'><div class='text'> We Appreciate It </div></div></div></div></br>");
+            });
+
+            socket.on("users", function(data){
+                console.log("Got users :: "+ data.user);
+                $users.html("");
+                data.forEach(function(user){
+                    $users.append("<div class='chat-box-online-left'><strong>"+ user +"</strong><hr class='hr-clas-low'/></div>")
+                });
+            });
+
+            socket.emit("register",{
+                email : username,
+                userId : userId
+            });
+
+        });
+</script>
+<script >
+    function myFunction() {
+        var x = document.getElementById("snackbar")
+        x.className = "show";
+        setTimeout(function(){ x.className = x.className.replace("show", ""); }, 5000);
+    }
+</script>
+
+<script type="text/javascript">
+        // Get the modal
+var modal = document.getElementById('myModal');
+
+// Get the button that opens the modal
+var btn = document.getElementById("myBtn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks on the button, open the modal 
+btn.onclick = function() {
+    modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+    modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+</script>
+
+<script type="text/javascript">
+        // Get the modal
+var modal = document.getElementById('myModal');
+
+// Get the image and insert it inside the modal - use its "alt" text as a caption
+var img = document.getElementById('myImg');
+var modalImg = document.getElementById("img01");
+var captionText = document.getElementById("caption");
+img.onclick = function(){
+    modal.style.display = "block";
+    modalImg.src = this.src;
+    captionText.innerHTML = this.alt;
+}
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() { 
+  modal.style.display = "none";
+}
+</script>
+</body>
+</html>

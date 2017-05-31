@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <link rel="shortcut icon" href="/images/favicon.ico" />
+ <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css"> <!-- load bootstrap css -->
+ <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css"> <!-- load fontawesome -->
+ <link href='//fonts.googleapis.com/css?family=Aguafina Script' rel='stylesheet'>
+    <title>About Social World</title>
+    <style>
+        
+body, html {
+  height: 100%;
+  margin: 0;
+  font: 400 15px/1.8 "Lato", sans-serif;
+  color: #777;
+}
+
+/*======================================
+    Side Buttons
+======================================= */
+#mySidenav a {
+    position: absolute;
+    left: -80px;
+    transition: 0.3s;
+    padding: 10px;
+    width: 100px;
+    text-decoration: none;
+    font-size: 14px;
+    color: white;
+    border-radius: 0 5px 5px 0;
+}
+
+#mySidenav a:hover {
+    left: 0;
+}
+
+#about {
+    top: 160px;
+    background-color: #4CAF50;
+}
+
+#blog {
+    top: 210px;
+    background-color: #2196F3;
+}
+
+#projects {
+    top: 260px;
+    background-color: #f44336;
+}
+
+#contact {
+    top: 310px;
+    background-color: #555
+}
+
+
+.bgimg-1, .bgimg-2, .bgimg-3 {
+  position: relative;
+  opacity: 0.65;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+}
+.bgimg-1 {
+  background-image: url("/images/img_parallax.jpg");
+  min-height: 100%;
+}
+
+.bgimg-2 {
+  background-image: url("/images/img_parallax2.jpg");
+  min-height: 400px;
+}
+
+.bgimg-3 {
+  background-image: url("/images/img_parallax3.jpg");
+  min-height: 400px;
+}
+
+.caption {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 100%;
+  text-align: center;
+  color: #000;
+}
+
+.caption span.border {
+  background-color: #111;
+  color: #fff;
+  padding: 18px;
+  font-size: 25px;
+  letter-spacing: 10px;
+}
+
+h3 {
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  font: 20px "Lato", sans-serif;
+  color: #111;
+}
+
+/* Turn off parallax scrolling for tablets and phones */
+@media only screen and (max-device-width: 1024px) {
+    .bgimg-1, .bgimg-2, .bgimg-3 {
+        background-attachment: scroll;
+    }
+}
+
+    </style>
+</head>
+<body data-gr-c-s-loaded="true">
+<!--Navbar-->
+<nav class="navbar navbar-inverse navbar-fixed-top" id="my-navbar">
+<div class="navbar-header">
+<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+</button>
+
+<a href="profile1" class="navbar-brand" style="font-family: Aguafina Script; font-size: 26px;">Social World</a>
+</div>
+
+<div class="collapse navbar-collapse" id="navbar-collapse">
+
+<a href="/update" class="btn navbar-btn navbar-right" style="color: #ffffff">Update</a>
+<a href="/About" class="btn navbar-btn navbar-right" style="color: #ffffff">About Us</a>
+    <ul class="nav navbar-nav">
+    <li><a href="/feedback">Feedback</a>
+    <li><a href="/polls">Events Poll</a>
+    <li><a href="/TaskList">Task List</a>
+    <li><a href="#Contact">Contact Us</a> 
+    </ul>
+</div>
+</nav>
+<!-- Side Buttons -->
+<div id="mySidenav" class="sidenav" style="z-index: 1;">
+  <a href="/About" id="about" style="z-index: 1;">About</a>
+  <a href="TaskList" id="blog" style="z-index: 1;">Task List</a>
+  <a href="update" id="projects" style="z-index: 1;">Update</a>
+  <a href="contact" id="contact" style="z-index: 1;">Contact</a>
+</div>
+<div id="google_translate_element" style="position: fixed;top: 100px;z-index: 1;"></div>
+<div class="bgimg-1">
+    <div class="caption">
+        <span class="border">Scroll Down</span>
+    </div>
+</div>
+<div style="color: #777;background-color: white;text-align: center;padding: 50px 80px; text-align: justify;">
+    <h3 style="text-align: center;">Social World !!</h3>
+    <p>Social World is a recreational site created by an emerging web developer.This S!te provides the interface for a comfortable 'Group Chat' with the secrecy, not letting anyone else ever to know about it than the ones who are already added in the group.It comes with facebook like 'Posting' capability so that members can share thier thoughts as well.Moreover it provides an 'ADD To-Do-Tasklist' as well so that group members can prepare the list of tasks they want to perform collectively.You all are warm-heartedly invited to have this Ch@tting Portal experience!!</p>
+</div>
+<div class="bgimg-2">
+    <div class="caption">
+        <span class="border" style="background-color: transparent;font-size: 25px; color: #f7f7f7 ">Less Height</span>
+    </div>
+</div>
+<div style="position: relative;">
+    <div style="color: #ddd; background-color: #282E34;text-align: center;padding: 50px 80px;text-align: justify;">
+        <p>Posting your thoughts and ideas becomes way better when you are appreciated!!</p>
+    </div>
+</div>
+<div class="bgimg-3">
+    <div class="caption">
+        <span class="border" style="background-color: transparent;font-size: 25px; color: #f7f7f7;">Scroll up</span>
+    </div>
+</div>
+<div style="position: relative;">
+    <div style="color: #ddd; background-color: #282E34;text-align: center;padding: 50px 80px;text-align: justify;">
+        <p>Preparing a To-Do-List will never be this easy and interactive!!</p>
+    </div>
+</div>
+<div class="bgimg-1">
+    <div class="caption">
+        <span class="border">COOL!</span>
+    </div>
+</div>
+<script type="text/javascript">
+function googleTranslateElementInit() {
+new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+}
+</script>
+
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+</body>
+</html>

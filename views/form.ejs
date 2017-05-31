@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<link rel="shortcut icon" href="/images/favicon.ico" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Signup</title>
+  <meta name="description" content="" />
+  <meta name="author" content="Purusharth Arora" />
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <link rel="shortcut icon" href="/images/favicon.ico" />
+  <link href='//fonts.googleapis.com/css?family=Aguafina Script' rel='stylesheet'>
+	<link href='https://fonts.googleapis.com/css?family=Raleway:400, 600' rel='stylesheet' type='text/css'>
+	<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" >
+  <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+  <script src="/socket.io/socket.io.js"></script>
+  <link rel="stylesheet" href="/stylesheets/material.min.css">
+  <script src="/node_modules/material-design-lite/material.min.js"></script>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
+
+	
+	</head>
+
+<style>
+.nav-wrapper {
+	padding:0;
+	height:90px;
+}
+ .input-field input {
+	
+	
+}
+body {
+	font-family:'Montserrat',sans-serif;  
+  background-image: url('images/Desktop-Cool.jpg');
+  background-position: center;
+  background-repeat: no-repeat;	
+}
+.input-field label {
+	color:black;
+	font-family: 'Montserrat',sans-serif;
+	font-size: 20px;
+	font-weight: bold;
+
+
+}
+
+#pic {
+	height:150px;
+	width:150px;
+	margin:auto;
+	
+
+}
+.card-panel {
+	margin:auto;
+	border:2px solid black;
+
+}
+
+</style>
+
+
+
+
+<body>
+
+ 
+<div class="col s12 l12 m12">
+
+
+	<nav class="nav-wrapper #e3f2fd black z-depth-2" style=" height:60px ">
+	<a href="#" data-activates="slide-out" class="button-collapse show-on-large "><i class="mdi-navigation-menu "></i></a>  <!-- Sidenav collapsible button which pops up when screen size decreases-->
+		<!--<div class="nav-wrapper ">-->
+
+		<div class="col s12 l12 m12 ">	
+			<a href="" class="navbar-brand brand-logo center" style="font-family: Aguafina Script; font-size: 32px;">Developer S!te</a> 
+    </div>
+  </nav>
+</div>
+  
+    <!-- show any messages that come back with authentication -->
+    <% if (message.length > 0) { %>
+        <div class="alert alert-danger"><%= message %></div>
+    <% } %>
+
+ <div class="col s3 l3 m3" >
+	 <ul class="side-nav  black darken-4 " id="slide-out">   <!--SIDE NAV CODE -->
+
+		<div class="center align" id="pic">
+			<img src="images/favicon.ico" class="circle responsive-img">
+			</div>
+    <li><a href="/login" class="white-text text-lighten-4" style="font-family: 'Raleway',sans-serif;font-size: 15px;text-decoration: none"> Login</a></li>
+    <div class="divider"></div>
+    <li><a href="/" class="white-text text-lighten-4" style="font-family: 'Raleway',sans-serif;font-size: 15px;text-decoration: none">Home</a></li>
+    <div class="divider"></div>
+   	<li><a href="/About"  class="white-text text-lighten-4"  style="font-family: 'Raleway',sans-serif;font-size: 15px;text-decoration: none">About Us</a></li>
+    <div class="divider"></div>
+    <li><a href="/update"  class="white-text text-lighten-4"  style="font-family: 'Raleway',sans-serif;font-size: 15px;text-decoration: none">Update</a></li>
+ 
+  </ul>
+  
+  </div>
+
+<main>
+ <div class="col s12 l12 m12">
+
+<div class="container">
+	<div class="col s12 l12 m12">
+		<h4 style="font-family:'Raleway',sans-serif ;font-weight: 400" class="center-align">Sign Up Here !!</h4>
+		</div>
+		</div>
+		<br>
+
+ <div class="container ">
+ 	<div class="card-panel  hoverable">
+      <div class="row">
+      <div class="loginform">
+      <form class="col s12 l12 m12" id="/signup" action="" method="post">
+        <div class="row">
+        	<div class="input-field col s12 l4 m4">
+
+
+        		<input type="text" placeholder="First name" id="firstname" name="firstname" class="validate" required>
+        		<label for="name">First Name</label>
+        		</div>
+        	<div class="input-field col s12 l4 m4">
+        		<input type="text" placeholder="Middle name" id="middlename" name="middlename" class="validate" required>
+        		<label for="name">Middle Name</label>
+        		</div>
+        	<div class="input-field col s12 m4 l4">
+        	<input type="text" placeholder="Last name" id="lastname" name="lastname" class="validate" required>
+        		<label for="name">last Name</label>
+        		</div>
+        		</div> <!--end row -->
+            <div class="row">
+               <div class="input-field col s12 l6 m6">
+                  
+                  <input placeholder="Username"  id="username"  name="username" type="text" class="active validate" required>
+                  <label for="username">Username</label>
+               </div>
+               <div class="input-field col s12 l6 m6">      
+                  <label for="password">Password</label>
+                  <input id="password" type="password" placeholder="Password" class="validate" required>          
+               </div>
+            </div>
+            <div class="row">
+               <div class="input-field col s12 l6 m6">
+                  <input placeholder="Email" id="email" type="email" class="validate">
+                  <label for="email">Email</label>
+               </div>
+            
+          
+               <div class="input-field col s12 l6 m6">
+			     
+                  
+                  <label for="address">Phone Number(optional) </label>
+                  <input type="text" placeholder="Phone number" id="mobileno" name="mobileno" class="validate" required>
+               </div>
+            </div>			
+            <div class="row">
+               <div class="input-field col s12 l6 m6">
+                  <input placeholder="Address"  type="text">
+                  <label for="adress"> Address </label>
+               </div>
+            <div class="input-field col s12 l6 m6">
+                   <span style="font-size: 20px;"><b>Profile Picture 😎</b></span> <br>
+                  <input placeholder="Profile Picture"  type="file">
+                  
+            </div>
+            </div>
+            <div class="row">
+             <label for="adress">Select Gender</label>
+            
+               <div class="input-field col l2 s12 m4">
+              
+                   <div class="col s12 l12 m6">
+                     <input id="male" type="radio" name="gender" value="male" checked>
+                     <label for="male">Male</label>
+                     </div>
+                 
+                 <div class="col s12 l12 m6">
+                     <input id="female" type="radio" name="gender" value="female" checked>
+                     <label for="female">Female</label>
+                 </div>
+                  
+               </div>
+            </div>   
+           <div class="input-field col s12 l12 m12">
+           	  <input type="date" id="dateofbirth" name="dateofbirth" class="datepicker">
+           	  <label for="date" style="font-size:10px ">Date of birth</label>
+           	</div>  
+           <div class="container">
+                <div class="col s12 m12 l12 center-align">
+                <button type="submit" class="btn btn-warning btn-lg" name="signup">SignUp</button>
+                </div>
+          </div>
+
+         </form> 
+         </div> 
+         </div>
+         </div>   
+         </div>
+
+         <br>
+ <hr> 
+
+
+
+
+         
+
+         </main>
+
+
+     <script type="text/javascript">
+     	$(".button-collapse").sideNav();
+
+
+
+     	$('.datepicker').pickadate({
+    selectMonths: true, // Creates a dropdown to control month
+    selectYears: 60// Creates a dropdown of 15 years to control year
+  });
+        
+     </script>
+   
+
+   
+   
+
+     <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="js/jquery.easing.min.js"></script>
+    <script src="js/jquery.fittext.js"></script>
+    <script src="js/wow.min.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="js/creative.js"></script>
+
+
+
+
+
+</body>

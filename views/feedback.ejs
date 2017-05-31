@@ -1,0 +1,176 @@
+<!doctype html>
+<html>
+<head>
+    <title>Valued Feedback</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <link rel="shortcut icon" href="/images/favicon.ico" />
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/chat.css">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/font-awesome.css">
+    <!-- CHANGES -->
+    <link href='//fonts.googleapis.com/css?family=Aguafina Script' rel='stylesheet'>
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <link rel="stylesheet" href="/stylesheets/material.min.css">
+    <script src="/node_modules/material-design-lite/material.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+</head>
+<body>
+<!--Navbar-->
+<nav class="navbar navbar-inverse navbar-fixed-top" id="my-navbar">
+<div class="navbar-header">
+<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+</button>
+
+<a href="/profile1" class="navbar-brand" style="font-family: Aguafina Script; font-size: 26px;">Social World !!</a>
+</div>
+
+<div class="collapse navbar-collapse" id="navbar-collapse">
+
+<a href="/update" class="btn navbar-btn navbar-right" style="color: #ffffff">Update</a>
+<a href="/About" class="btn navbar-btn navbar-right" style="color: #ffffff">About Us</a>
+    <ul class="nav navbar-nav">
+    <li><a href="/feedback">Feedback</a>
+    <li><a href="/polls">Events Poll</a>
+    <li><a href="/TaskList">Task List</a>
+    <li id="myBtn"><a href="#Contact">Contact Us</a> 
+    </ul>
+</div>
+<!-- The Modal -->
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+              <div class="card2">
+                <img src="/images/me.jpg" alt="Purusharth Arora" style="width:100%">
+                <div class="container2">
+                    <h3>Purusharth Arora</h3>
+                    <p class="title">CEO & Founder, Social World</p>
+                    <p>V.I.T University</p>
+                    <a href="#" class="icon"><i class="fa fa-dribbble"></i></a> 
+                    <a href="#" class="icon"><i class="fa fa-twitter"></i></a> 
+                    <a href="#" class="icon"><i class="fa fa-linkedin"></i></a> 
+                    <a href="#" class="icon"><i class="fa fa-facebook"></i></a> 
+                    <p><button class="button">Contact</button></p>
+                </div>
+            </div>
+    <span class="close">&times;</span>
+        <div id="myModal" class="modal">
+
+            <!-- The Close Button -->
+            <span class="close" onclick="document.getElementById('myModal').style.display='none'">&times;</span>
+
+
+        <div id="caption"></div>
+        </div>
+  </div>
+</div>
+</nav><br><br><br>
+<!-- Side Buttons -->
+<div id="mySidenav" class="sidenav">
+  <a href="/About" id="about">About</a>
+  <a href="/TaskList" id="blog">Task List</a>
+  <a href="/update" id="projects">Update</a>
+  <a href="/contact" id="contact">Contact</a>
+</div>
+
+<!-- Feedback Form -->
+<div class="card2">
+                <img src="/images/Desktop-Cool-2.jpg" alt="Purusharth Arora" style="width:100%">
+                <div class="container2">
+                    <h4>Rate My Website</h4>
+                    <p><strong>Please let us know your experience with our website</strong></p>
+                    <p class="title">Your Valuable Feedback</p>
+                </div>
+                <div>
+                    <form id="labnol" method="get">
+                        <h5><strong>Full Name</strong></h5>
+                        <input type="text" name="firstname" placeholder="First Name..">
+                        <input type="text" name="lastname" placeholder="Last Name.."><br><br>
+                        <h5><strong>E-Mail</strong></h5>
+                        <input type="email" name="email" placeholder="@gmail.com" size="34"><br><br>
+                        <h6><strong>Please Rate My Site:</strong></h6>
+                        <strong style="padding-right: 10px;">Not Bad</strong>
+                        1&#9734;<input type="radio">
+                        2&#9734;<input type="radio">
+                        3&#9734;<input type="radio">
+                        4&#9734;<input type="radio">
+                        5&#9734;<input type="radio">
+                        <strong style="padding-left: 10px;">Excellent</strong> <br>  
+                        <br><p><strong>How would you suggest I improve it?</strong></p>
+                        <div class="speech">
+                        <textarea placeholder="Valuable Comments ..(Write/Speak)" row="10" cols="34" id="transcript"></textarea><img onclick="startDictation()" src="//i.imgur.com/cHidSVu.gif" />
+                        </div>
+                    </form><br>
+                    <p><button class="button" type="submit">Submit</button></p>
+                </div>
+</div>
+
+
+<script >
+            // Get the modal
+var modal = document.getElementById('myModal');
+
+// Get the button that opens the modal
+var btn = document.getElementById("myBtn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks on the button, open the modal 
+btn.onclick = function() {
+    modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+    modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+</script>
+<!-- HTML5 Speech Recognition API -->
+<script>
+  function startDictation() {
+
+    if (window.hasOwnProperty('webkitSpeechRecognition')) {
+
+      var recognition = new webkitSpeechRecognition();
+
+      recognition.continuous = false;
+      recognition.interimResults = false;
+
+      recognition.lang = "en-US";
+      recognition.start();
+
+      recognition.onresult = function(e) {
+        document.getElementById('transcript').value
+                                 = e.results[0][0].transcript;
+        recognition.stop();
+        //document.getElementById('labnol').submit();
+      };
+
+      recognition.onerror = function(e) {
+        recognition.stop();
+      }
+
+    }
+  }
+</script>
+</body>
+</html>

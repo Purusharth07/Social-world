@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+    <title>Update</title>
+    <link rel="shortcut icon" href="/images/favicon.ico" />
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css"> <!-- load bootstrap css -->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css"> <!-- load fontawesome -->
+     <link href='//fonts.googleapis.com/css?family=Aguafina Script' rel='stylesheet'>
+     <link rel="stylesheet" type="text/css" href="/stylesheets/chat.css">
+<style>
+body, html {
+    height: 100%;
+    margin: 0;
+}
+
+/*======================================
+    Side Buttons
+======================================= */
+#mySidenav a {
+    position: absolute;
+    left: -80px;
+    transition: 0.3s;
+    padding: 10px;
+    width: 100px;
+    text-decoration: none;
+    font-size: 14px;
+    color: white;
+    border-radius: 0 5px 5px 0;
+}
+
+#mySidenav a:hover {
+    left: 0;
+}
+
+#about {
+    top: 160px;
+    background-color: #4CAF50;
+}
+
+#blog {
+    top: 210px;
+    background-color: #2196F3;
+}
+
+#projects {
+    top: 260px;
+    background-color: #f44336;
+}
+
+#contact {
+    top: 310px;
+    background-color: #555
+}
+
+.bgimg {
+    background-image: url('/images/time-clock.jpg');
+    height: 100%;
+    background-position: center;
+    background-size: cover;
+    position: relative;
+    color: white;
+    font-family: "Courier New", Courier, monospace;
+    font-size: 25px;
+}
+
+.topleft {
+    position: absolute;
+    top: 0;
+    left: 16px;
+}
+
+.bottomleft {
+    position: absolute;
+    bottom: 0;
+    left: 16px;
+}
+
+.middle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+hr {
+    margin: auto;
+    width: 40%;
+}
+</style>
+<body>
+<!--Navbar-->
+<nav class="navbar navbar-inverse navbar-fixed-top" id="my-navbar">
+<div class="navbar-header">
+<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+</button>
+
+<a href="/profile1" class="navbar-brand" style="font-family: Aguafina Script; font-size: 26px;">Social World</a>
+</div>
+
+<div class="collapse navbar-collapse" id="navbar-collapse">
+
+<a href="/update" class="btn navbar-btn navbar-right" style="color: #ffffff">Update</a>
+<a href="/About" class="btn navbar-btn navbar-right" style="color: #ffffff">About Us</a>
+    <ul class="nav navbar-nav">
+    <li><a href="/feedback">Feedback</a>
+    <li><a href="/polls">Events Poll</a>
+    <li><a href="/TaskList">Task List</a>
+    <li id="myBtn"><a href="#Contact">Contact Us</a> 
+    </ul>
+</div>
+<!-- The Modal -->
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+              <div class="card2">
+                <img src="/images/me.jpg" alt="Purusharth Arora" style="width:100%">
+                <div class="container2">
+                    <h3>Purusharth Arora</h3>
+                    <p class="title">CEO & Founder, Social World</p>
+                    <p>V.I.T University</p>
+                    <a href="#" class="icon"><i class="fa fa-dribbble"></i></a> 
+                    <a href="#" class="icon"><i class="fa fa-twitter"></i></a> 
+                    <a href="#" class="icon"><i class="fa fa-linkedin"></i></a> 
+                    <a href="#" class="icon"><i class="fa fa-facebook"></i></a> 
+                    <p><button class="button">Contact</button></p>
+                </div>
+            </div>
+    <span class="close">&times;</span>
+        <div id="myModal" class="modal">
+
+            <!-- The Close Button -->
+            <span class="close" onclick="document.getElementById('myModal').style.display='none'">&times;</span>
+
+
+        <div id="caption"></div>
+        </div>
+  </div>
+</div>
+</nav>
+<!-- Side Buttons -->
+<div id="mySidenav" class="sidenav" style="z-index: 1;">
+  <a href="/About" id="about" style="z-index: 1;">About</a>
+  <a href="/TaskList" id="blog" style="z-index: 1;">Task List</a>
+  <a href="/update" id="projects" style="z-index: 1;">Update</a>
+  <a href="/contact" id="contact" style="z-index: 1;">Contact</a>
+</div>
+<div class="bgimg">
+  <div class="topleft">
+    <p>Social World !!</p>
+  </div>
+  <div class="middle">
+    <h1>UPDATE COMING SOON</h1>
+    <hr>
+    <p id="demo" style="font-size:30px"></p>
+  </div>
+  <div class="bottomleft">
+    <p>Chat With Secrecy !!</p>
+  </div>
+</div>
+
+<script>
+// Set the date we're counting down to
+var countDownDate = new Date("June 13, 2017 00:00:00").getTime();
+
+// Update the count down every 1 second
+var countdownfunction = setInterval(function() {
+
+    // Get todays date and time
+    var now = new Date().getTime();
+    
+    // Find the distance between now an the count down date
+    var distance = countDownDate - now;
+    
+    // Time calculations for days, hours, minutes and seconds
+    var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    
+    // Output the result in an element with id="demo"
+    document.getElementById("demo").innerHTML = days + "d " + hours + "h "
+    + minutes + "m " + seconds + "s ";
+    
+    // If the count down is over, write some text 
+    if (distance < 0) {
+        clearInterval(countdownfunction);
+        document.getElementById("demo").innerHTML = "EXPIRED";
+    }
+}, 1000);
+</script>
+
+<script type="text/javascript">
+        // Get the modal
+var modal = document.getElementById('myModal');
+
+// Get the button that opens the modal
+var btn = document.getElementById("myBtn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks on the button, open the modal 
+btn.onclick = function() {
+    modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+    modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+</script>
+</body>
+</html>

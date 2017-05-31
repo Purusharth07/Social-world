@@ -1,0 +1,321 @@
+<!doctype html>
+<html>
+<head>
+    <title>Social World</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="description" content="" />
+    <meta name="author" content="Purusharth Arora" />
+    <link rel="shortcut icon" href="/images/favicon.ico" />
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/chat.css">
+    <!-- CHANGES -->
+    <link href='//fonts.googleapis.com/css?family=Aguafina Script' rel='stylesheet'>
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <link rel="stylesheet" href="/stylesheets/material.min.css">
+    <script src="/node_modules/material-design-lite/material.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/proto-chat.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+<!--Navbar-->
+<nav class="navbar navbar-inverse navbar-fixed-top" id="my-navbar">
+<div class="navbar-header">
+<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+</button>
+
+<a href="" class="navbar-brand" style="font-family: Aguafina Script; font-size: 26px;">Social World</a>
+</div>
+
+<div class="collapse navbar-collapse" id="navbar-collapse">
+
+<a href="/update" class="btn navbar-btn navbar-right" style="color: #ffffff">Update</a>
+<a href="/About" class="btn navbar-btn navbar-right" style="color: #ffffff">About Us</a>
+    <ul class="nav navbar-nav">
+    <li><a href="/feedback">Feedback</a>
+    <li><a href="/polls">Events Poll</a>
+    <li><a href="/TaskList">Task List</a>
+    <li><a href="/contact">About Developer</a>  
+    </ul>
+</div>
+</nav>
+<div style="position: fixed;top:50px; left: 92.5%;">
+       <!-- <h4><span class="fa fa-anchor"></span> Developers Ch@tting Portal</h4> -->
+        <button type="button" style="border:none;display:inline-block;outline:0;padding:5px 5px;vertical-align:middle;overflow:hidden;text-decoration:none;text-align:center;cursor:pointer;white-space:nowrap;color:#fff;background-color: #607d8b;height: 40px; width: 100px;"><a href="/logout" id="Logout"><strong>Logout</strong></a></button>
+</div> 
+<!-- Side Buttons --> 
+<div id="mySidenav" class="sidenav">
+  <a href="/About" id="about">About</a>
+  <a href="/TaskList" id="blog">Task List</a>
+  <a href="/update" id="projects">Update</a>
+  <a href="/contact" id="contact">Contact</a>
+</div>
+<!-- Page Container -->
+<div class="container" style="max-width:1800px;margin-top:80px;">
+    <!-- The Grid -->
+  <div class="w3-row">
+    <!-- Left Column -->
+    <div class="w3-col m3">
+        <!-- Profile -->
+      <div class="profile">
+      <div class="profile-container">
+          <h2 style="text-align:center;">
+          <div class="panel-body chat-box-online" id="users1">
+                     
+          </div>
+          </h2>
+          <p style="text-align:center;"><img src="/images/me.jpg" style="border-radius:50%;height:106px;width:106px" alt="Avatar"></p>
+          <hr>
+          <p><i class="fa fa-pencil fa-fw" style="color:#607d8b;margin-right:16px; padding: 0px 16px;"></i> Web Developer, UI</p>
+         <p><i class="fa fa-home fa-fw" style="color:#607d8b;margin-right:16px; padding: 0px 16px;"></i> Uttarakhand, India</p>
+         <p><i class="fa fa-birthday-cake fa-fw" style="color:#607d8b;margin-right:16px; padding: 0px 16px;"></i> March 7, 1997</p>
+      </div>
+      </div>
+      <br>
+
+      <!-- Accordion -->
+      <div style="box-shadow:0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);border-radius:2px">
+      <div style="color:#000; background-color:#fff;">
+          <button onclick="myFunction('Demo1')" class="button"><i class="fa fa-circle-o-notch fa-fw " style="margin-right:16px;"></i> My Groups</button>
+          <div id="Demo1" class="profile-container" style="display:none;">
+            <p>Some other text..</p>
+          </div>
+          <button onclick="myFunction('Demo2')" class="button"><i class="fa fa-calendar-check-o fa-fw " style="margin-right: 16px;"></i> My Events</button>
+          <div id="Demo2" class="profile-container" style="display:none;">
+            <p>Some other text..</p>
+          </div>
+          <button onclick="myFunction('Demo3')" class="button"><i class="fa fa-users fa-fw " style="margin-right: 16px;"></i> My Photos</button>
+          <div id="Demo3" class="profile-container" style="display:none;">
+         <div class="row-padding">
+         <br>
+           <div style="width:49.99999%;padding:0 8px;float:left;">
+             <img src="/images/me.jpg" style="width:100%;margin-bottom:16px;">
+           </div>
+           <div style="width:49.99999%;padding:0 8px;float:left;">
+             <img src="/images/me.jpg" style="width:100%;margin-bottom:16px;">
+           </div>
+           <div style="width:49.99999%;padding:0 8px;float:left;">
+             <img src="/images/me.jpg" style="width:100%;margin-bottom:16px;">
+           </div>
+           <div style="width:49.99999%;padding:0 8px;float:left;">
+             <img src="/images/me.jpg" style="width:100%;margin-bottom:16px;">
+           </div>
+           <div style="width:49.99999%;padding:0 8px;float:left;">
+             <img src="/images/me.jpg" style="width:100%;margin-bottom:16px;">
+           </div>
+           <div style="width:49.99999%;padding:0 8px;float:left;">
+             <img src="/images/me.jpg" style="width:100%;margin-bottom:16px;">
+           </div>
+         </div>
+      </div>
+      </div>
+    </div>
+    <br>
+
+    <!-- Alert Box -->
+      <div class="message-box">
+        <span onclick="this.parentElement.style.display='none'" class="comment-close">
+          <i class="fa fa-remove"></i>
+        </span>
+        <p><strong>Hey!</strong></p>
+        <p>We hope you are having a great experience !!</p>
+      </div>
+    <!-- End Left Column -->
+  </div>
+
+<!-- Middle Column -->
+<div class="w3-col m7">
+    <div class="w3-row-padding">
+        <div class="w3-col m12">
+            <div style="box-shadow:0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12); border-radius:2px; color:#000; background-color: #fff;">
+              <form id="postForm">
+                <div style="padding:0.01em 16px;padding:8px 16px;" class="form-group">
+                    <h6 style="opacity:0.60;">Thank You for Joining Us !!</h6>
+                    <textarea class="form-control" id="content" style="border:1px solid #ccc;padding:8px 16px;" placeholder="Status: Feeling Blue."></textarea><br>
+                    <button type="submit" style="border:none;display:inline-block;outline:0;padding:8px 16px;vertical-align:middle;overflow:hidden;text-decoration:none;color:inherit;background-color:inherit;text-align:center;cursor:pointer;white-space:nowrap;color:#fff;background-color: #607d8b;"><i class="fa fa-pencil"></i>  share</button>
+                    <button type="button" style="border:none;display:inline-block;outline:0;padding:8px 16px;vertical-align:middle;overflow:hidden;text-decoration:none;color:inherit;background-color:inherit;text-align:center;cursor:pointer;white-space:nowrap;color:#fff;background-color: #607d8b;"><i class="fa fa-paperclip"></i> Upload Image</button>
+                </div>
+              </form>
+            </div>
+        </div>
+    </div>
+
+    <div id="post">
+
+    </div>
+
+    <div style="padding:8px 16px;box-shadow:0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);color: #000; background-color: #fff;border-radius:2px;margin:16px;"><br>
+        <img src="/images/me.jpg" alt="Avatar" style="float: left;border-radius:50%;margin-right:16px;width:80px;height: 80px;">
+        <span style="float:right;opacity:0.60;">Time of Post</span>
+        <h4>Purusharth Arora</h4><br>
+        <hr style="content:"";display:table;clear:both;">
+        <p>Social World is a recreational site created by an emerging web developer for web developers.This S!te provides the interface for a comfortable 'Group Chat' and that with the secrecy that is no other will ever come to know about it than the ones who are already added in the group.It comes with facebook like 'Posting' capability so that members can share thier thoughts as well.</p>
+        <div style="margin:0 -16px;padding:0 8px;">
+            <div style="width:100%;">
+              <img src="/images/me.jpg" style="width:100%;margin-bottom:16px;" alt="Profile Pic">
+            </div>
+        </div>
+        <button type="button" style="border:none;display:inline-block;outline:0;padding:8px 16px;vertical-align:middle;overflow:hidden;text-decoration:none;color:inherit;background-color:inherit;text-align:center;cursor:pointer;white-space:nowrap;color: #fff; background-color: #57707d;margin-bottom:16px;"><i class="fa fa-thumbs-up"></i>  Like</button> 
+        <button type="button" style="border:none;display:inline-block;outline:0;padding:8px 16px;vertical-align:middle;overflow:hidden;text-decoration:none;color:inherit;background-color:inherit;text-align:center;cursor:pointer;white-space:nowrap;margin-bottom:16px;color: #fff; background-color: #4d636f;"><i class="fa fa-comment"></i>  Comment</button>    
+    </div>
+</div>
+
+    <!-- Right Column -->
+    <div class="w3-col m2">
+      <div style="box-shadow:0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);border-radius:2px;color: #000; background-color: #fff;text-align:center;">
+        <div style="padding:0.01em 16px;">
+          <p><strong>Upcoming Events:</strong></p>
+          <img src="/images/favicon.png" alt="Forest" style="width:100%;">
+          <p><i><strong>Open Source Programming Hackathon</strong></i></p>
+          <p>April 15</p>
+          <p><button style="border:none;display:inline-block;outline:0;padding:8px 16px;vertical-align:middle;overflow:hidden;text-decoration:none;color:inherit;background-color:inherit;text-align:center;cursor:pointer;white-space:nowrap;display:block;width:100%;color:#000;background-color: #dfe5e8;">Info</button></p>
+        </div>
+      </div>
+      <br>
+
+      <div style="box-shadow:0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);border-radius:2px;color:#000;background-color: #fff;padding-top:32px;padding-bottom: 32px;text-align:center;">
+        <p><i class="fa fa-bug w3-xxlarge"></i></p>
+      </div>
+
+      <!-- Online users -->
+        <div style="box-shadow:0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);border-radius:2px;color:#000;background-color: #fff;text-align:center;" id="usercontainer">
+            <div class="chat-box-online-div" >
+                <div class="chat-box-online-head">
+                <h6>Online Users</h6>
+                </div>
+                <div class="panel-body chat-box-online" id="users">
+                     
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+    <!-- End of Grid -->
+    </div>
+    <!-- End Page Container -->
+</div>
+<!-- Footer -->
+<footer style="padding:0.01em 16px;color: #fff; background-color: #303e45;padding-top:8px;padding-bottom:8px;text-align:center;">
+  <p>Powered by <a href="" target="_blank" style="color: pink;">Social World</a></p>
+</footer>
+<script >
+        $('body').toggleClass('loaded');
+        $(document).ready(function() {
+ 
+        setTimeout(function(){
+            $('body').addClass('loaded');
+            $('h1').css('color','#222222');
+            }, 3000);
+ 
+        });
+        var username = <%- JSON.stringify(user.local.username) %>;
+        var userId = <%- JSON.stringify(user._id) %>;
+        $(function(){
+            socket = io.connect();
+            var $messageForm = $('#messageForm');
+            var $postForm = $('#postForm');
+            var $message = $('#message');
+            var $chat = $('#chat');
+            var $users = $("#users");
+            var $users1 = $("#users1");
+            var $post = $('#post');
+            var $content = $('#content');
+            var $date = $('#date');
+
+
+            $messageForm.submit(function(e){
+                    e.preventDefault();
+                    socket.emit('send message', $message.val());
+                    $message.val('');
+                    console.log('Submitted'); 
+            });
+            $postForm.submit(function(e){
+                    e.preventDefault();
+                    socket.emit('share', $content.val());
+                    $post.val('');
+                    console.log('Submitted POST'); 
+            });
+            socket.on('new message', function(data){
+                $chat.append("<div class='chat-box-left'>"+ data.msg +"</div><div class='chat-box-name-left'><strong>"+ data.user +"</strong></div>");
+            });
+
+            socket.on('new post', function(data){
+                $post.append("<div style='padding:8px 16px;box-shadow:0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);color: #000; background-color: #fff;border-radius:2px;margin:16px;><img src='/images/me.jpg'  style='float:left;border-radius:50%;margin-right:16px;width:80px;height: 80px;' alt='Avatar'><span style='float:right;opacity:0.60;'>Time of Post</span><h4>"+ data.user +"</h4><br><hr style='content:\"\";display:table;clear:both;'><p>"+ data.post +"</p><div style='margin:0 -16px;padding:0 8px;'><div style='width:100%;'><img src='/images/me.jpg' style='width:100%;margin-bottom:16px;' alt='Profile Pic'></div></div><button type='button' style='border:none;display:inline-block;outline:0;padding:8px 16px;vertical-align:middle;overflow:hidden;text-decoration:none;color:inherit;background-color:inherit;text-align:center;cursor:pointer;white-space:nowrap;color: #fff; background-color: #57707d;margin-bottom:16px;'><i class='fa fa-thumbs-up'></i>  Like</button> <button type='button' style='border:none;display:inline-block;outline:0;padding:8px 16px;vertical-align:middle;overflow:hidden;text-decoration:none;color:inherit;background-color:inherit;text-align:center;cursor:pointer;white-space:nowrap;margin-bottom:16px;color: #fff; background-color: #4d636f;'><i class='fa fa-comment'></i>  Comment</button></div>");
+            });
+
+            socket.on("users", function(data){
+                console.log("Got users :: "+ data.user);
+                $users.html("");
+                data.forEach(function(user){
+                $users.append("<div class='chat-box-online-left'><span style='font-size: 14px;'><strong>"+ user +"</strong></span><hr class='hr-clas-low'/></div>");
+                });
+            });
+
+            socket.emit("register",{
+                username : username,
+                userId : userId
+            });
+
+        });
+</script>
+<script>
+  
+  var usercontainer = document.querySelector('#usercontainer');
+var usercontainerPosition = usercontainer.getBoundingClientRect();
+var placeholder = document.createElement('div');
+placeholder.style.width = usercontainerPosition.width + 'px';
+placeholder.style.height = usercontainerPosition.height + 'px';
+var isAdded = false;
+
+window.addEventListener('scroll', function() {
+    if (window.pageYOffset >= usercontainerPosition.top && !isAdded) {
+        usercontainer.classList.add('sticky');
+       usercontainer.parentNode.insertBefore(placeholder, usercontainer);
+        isAdded = true;
+    } else if (window.pageYOffset < usercontainerPosition.top && isAdded) {
+        usercontainer.classList.remove('sticky');
+        usercontainer.parentNode.removeChild(placeholder);
+        isAdded = false;
+    }
+});
+
+</script>
+<script>
+// Accordion
+function myFunction(id) {
+    var x = document.getElementById(id);
+    if (x.className.indexOf("w3-show") == -1) {
+        x.className += " w3-show";
+        x.previousElementSibling.className += " w3-theme-d1";
+    } else { 
+        x.className = x.className.replace("w3-show", "");
+        x.previousElementSibling.className = 
+        x.previousElementSibling.className.replace(" w3-theme-d1", "");
+    }
+}
+
+// Used to toggle the menu on smaller screens when clicking on the menu button
+function openNav() {
+    var x = document.getElementById("navDemo");
+    if (x.className.indexOf("w3-show") == -1) {
+        x.className += " w3-show";
+    } else { 
+        x.className = x.className.replace(" w3-show", "");
+    }
+}
+</script>
+
+</body>
+</html>
