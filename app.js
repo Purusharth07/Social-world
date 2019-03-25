@@ -15,7 +15,7 @@ var passport = require('passport');
 var local = require('passport-local');
 var flash    = require('connect-flash');
 var session  = require('express-session');
-var configDB = require('./config/database.js');
+//var configDB = require('./config/database.js');
 
 var User = require('./models/user');
 var Post = require('./models/post');
@@ -33,7 +33,8 @@ var connections = [];
 
 require('./config/passport')(passport); // pass passport for configuration
 // configuration ===============================================================
-mongoose.connect(configDB.url); // connect to our database
+//mongoose.connect(configDB.url); // connect to our database
+mongoose.connect('mongodb://127.0.0.1:27017/databaseName');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
